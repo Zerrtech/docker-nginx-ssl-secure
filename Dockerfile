@@ -4,10 +4,10 @@ MAINTAINER MarvAmBass
 ENV LANG C.UTF-8
 
 RUN apt-get update; apt-get install -y \
-    openssl; apt-get install -y ca-certificates
+    openssl; apt-get install -y ca-certificates; update-ca-certificates
 
 RUN rm -rf /etc/nginx/conf.d/*; \
-    mkdir -p /etc/nginx/external; cp /tmp/external/* /etc/nginx/external/; update-ca-certificates
+    mkdir -p /etc/nginx/external
 
 RUN sed -i 's/access_log.*/access_log \/dev\/stdout;/g' /etc/nginx/nginx.conf; \
     sed -i 's/error_log.*/error_log \/dev\/stdout info;/g' /etc/nginx/nginx.conf; \
